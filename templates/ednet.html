@@ -1,0 +1,15 @@
+{% extends "base.html" %}{% block title %}EdNet Dataset{% endblock %}
+{% block content %}
+<div class="page-title"><div><span class="eyebrow">DATASET INTEGRATION</span><h1>EdNet KT1 Analytics</h1><p class="muted">Learning interaction data connected to P29.</p></div></div>
+{% if not available %}<section class="panel"><p>EdNet KT1 folder was not found. Place downloaded user CSV files in <code>data/EdNet/KT1/</code>.</p></section>
+{% else %}
+<div class="grid three stats">
+<div class="stat"><span>Rows scanned</span><strong>{{ "{:,}".format(stats.rows_scanned) }}</strong><small>{% if stats.sampled %}First 50,000 rows (sample){% else %}Full dataset{% endif %}</small></div>
+<div class="stat"><span>Students observed</span><strong>{{ stats.students_seen }}</strong><small>In scanned rows</small></div>
+<div class="stat"><span>Questions observed</span><strong>{{ stats.questions_seen }}</strong><small>Unique question IDs</small></div></div>
+<section class="panel"><div class="panel-head"><div><span class="eyebrow">INTERACTION ANALYTICS</span><h2>KT1 overview</h2></div></div>
+<p>Median response time: <b>{{ stats.median_elapsed_seconds }} seconds</b></p>
+<p>Answer-choice distribution:</p><div class="recommend-row">{% for answer, count in stats.answer_distribution.items() %}<span class="topic-mark">{{ answer|upper }}</span><b>{{ count }}</b>{% endfor %}</div>
+<p class="muted">KT1 records answer choices and time spent, but does not provide correctness labels. Accuracy/mastery training requires EdNet-KT2 or another labeled source.</p></section>
+{% endif %}
+{% endblock %}

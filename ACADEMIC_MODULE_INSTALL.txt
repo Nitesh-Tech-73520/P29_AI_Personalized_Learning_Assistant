@@ -1,0 +1,23 @@
+Project P29 - Academic Section Management
+
+This ZIP contains updated project source files for the Academic Details module.
+
+Installation:
+1. Back up your current project folder first.
+2. Extract this ZIP. It contains the P29_AI_Personalized_Learning_Assistant folder.
+3. Copy/merge that folder into your project location, allowing the listed files to be replaced.
+4. Keep your existing .env file and database. Do not replace your .env with any included file.
+5. Start the app: python app.py
+6. Log in and use the new Academic Details navigation link.
+
+Files changed: app.py, database.py, schema.sql, templates/base.html, templates/academic.html, static/css/style.css.
+The academic_details table is created by init_db() on application startup for MySQL or SQLite.
+
+
+IMPORTANT - PRESERVE YOUR EXISTING DASHBOARD AND PROFILE
+- This package keeps templates/dashboard.html unchanged.
+- The existing dashboard design, statistics, links, and behavior are not modified.
+- The Profile navigation option is included in the top navigation.
+- A Profile page is provided at /profile and shows the signed-in student's account information.
+- Keep your existing .env file and database. Do not replace them.
+- When merging files, do not overwrite dashboard.html with a different dashboard file.

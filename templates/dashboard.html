@@ -1,0 +1,10 @@
+{% extends "base.html" %}{% block title %}Dashboard{% endblock %}
+{% block content %}
+<div class="page-title"><div><span class="eyebrow">YOUR LEARNING SPACE</span><h1>Welcome back, {{ session.get('student_name') }} 👋</h1><p class="muted">A little progress each day adds up to big results.</p></div><a class="button primary" href="{{ url_for('courses') }}">Explore courses ↗</a></div>
+<div class="grid three stats"><div class="stat"><span>Enrolled courses</span><strong>{{ stats.courses }}</strong><small>Keep exploring</small></div><div class="stat"><span>Quiz attempts</span><strong>{{ stats.quizzes }}</strong><small>Practice makes progress</small></div><div class="stat"><span>Average score</span><strong>{{ "%.0f"|format(stats.average) }}%</strong><small>Across your attempts</small></div></div>
+<div class="content-grid"><section class="panel"><div class="panel-head"><div><span class="eyebrow">YOUR NEXT STEPS</span><h2>Recommended learning</h2></div><a href="{{ url_for('quiz') }}">Practice →</a></div>
+{% for item in recommendations %}<div class="recommend-row"><div class="topic-mark">✦</div><div class="grow"><b>{{ item.course_name }} · {{ item.topic_name }}</b><p>{{ item.reason }}</p></div><a class="text-link" href="{{ url_for('quiz') }}">Practice</a></div>{% endfor %}
+</section><section class="panel"><div class="panel-head"><div><span class="eyebrow">RECENT ACTIVITY</span><h2>Quiz history</h2></div><a href="{{ url_for('progress') }}">View all →</a></div>
+{% for item in recent %}<div class="history-row"><div><b>{{ item.topic_name }}</b><small>{{ item.course_name }}</small></div><strong class="{% if item.score >= 70 %}good{% else %}needs-work{% endif %}">{{ "%.0f"|format(item.score) }}%</strong></div>{% else %}<p class="empty">Your quiz attempts will appear here.</p>{% endfor %}
+</section></div>
+{% endblock %}

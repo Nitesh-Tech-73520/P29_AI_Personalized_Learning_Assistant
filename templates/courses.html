@@ -1,0 +1,4 @@
+{% extends "base.html" %}{% block title %}Courses{% endblock %}
+{% block content %}<div class="page-title"><div><span class="eyebrow">BUILD YOUR KNOWLEDGE</span><h1>Explore courses</h1><p class="muted">Choose a subject and work through its topics.</p></div></div>
+<div class="grid three">{% for c in courses %}<article class="course-card"><div class="course-symbol">▤</div><span class="eyebrow">{{ c.topic_count }} TOPICS</span><h2>{{ c.course_name }}</h2><p>{{ c.description or "Explore the topics in this course." }}</p><div class="course-bottom"><span class="pill">{{ "Enrolled" if c.enrolled else "Available" }}</span><a class="button small primary" href="{{ url_for('course_detail', course_id=c.course_id) }}">Open course →</a></div></article>{% endfor %}</div>
+{% endblock %}

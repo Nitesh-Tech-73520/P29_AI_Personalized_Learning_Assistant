@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}My Profile | LearnMate{% endblock %}
+
+{% block content %}
+<section class="profile-page">
+  <div class="profile-header">
+    <div>
+      <span class="eyebrow">STUDENT ACCOUNT</span>
+      <h1>My Profile</h1>
+      <p class="muted">Your account information and academic details.</p>
+    </div>
+    <div class="profile-avatar" aria-hidden="true">👤</div>
+  </div>
+
+  <div class="profile-card">
+    <div class="profile-card-heading">
+      <h2>Account information</h2>
+      <span class="profile-status">Student account</span>
+    </div>
+    <dl class="profile-details">
+      <div><dt>Full name</dt><dd>{{ student.name }}</dd></div>
+      <div><dt>Email address</dt><dd>{{ student.email }}</dd></div>
+      <div><dt>Student ID</dt><dd>{{ student.student_id }}</dd></div>
+      <div><dt>Account created</dt><dd>{{ student.created_at or "Not available" }}</dd></div>
+    </dl>
+    <div class="profile-actions">
+      <a class="button primary" href="{{ url_for('academic') }}">Academic Details</a>
+      <a class="button ghost" href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

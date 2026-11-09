@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}LearnMate | AI Personalized Learning{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-copy">
+    <span class="eyebrow">YOUR PERSONAL AI STUDY PARTNER</span>
+    <h1>Learn at your pace.<br><em>Grow with confidence.</em></h1>
+    <p>A smarter learning space that connects your study materials, practice quizzes and progress in one place.</p>
+    <div class="actions"><a class="button primary" href="{{ url_for('register') }}">Create free account ↗</a><a class="button ghost" href="{{ url_for('login') }}">I already have an account</a></div>
+    <div class="trust"><span>✓ Personalized revision</span><span>✓ Notes-based AI tutor</span><span>✓ Progress insights</span></div>
+  </div>
+  <div class="hero-art"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="brain">✦</div><div class="float-card card-a">📚 <b>Study materials</b><small>One place for your notes</small></div><div class="float-card card-b">🎯 <b>Learning goals</b><small>Built around your progress</small></div><div class="float-card card-c">✨ <b>AI study buddy</b><small>Ask, explore, understand</small></div></div>
+</section>
+<section class="section">
+  <div class="section-heading"><span class="eyebrow">ALL THE TOOLS YOU NEED</span><h2>Make every study session count</h2><p>Learn, practice and understand what to focus on next.</p></div>
+  <div class="grid three">
+    <article class="feature"><div class="feature-icon purple">✧</div><h3>AI Tutor</h3><p>Ask questions and find relevant explanations from your uploaded notes.</p></article>
+    <article class="feature"><div class="feature-icon orange">▤</div><h3>Smart Practice</h3><p>Generate topic-based practice quizzes from your learning materials.</p></article>
+    <article class="feature"><div class="feature-icon green">↗</div><h3>Personal Progress</h3><p>Review scores and get suggestions for topics that need attention.</p></article>
+  </div>
+</section>
+{% endblock %}

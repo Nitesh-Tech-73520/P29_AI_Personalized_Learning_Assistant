@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Academic Information | LearnMate{% endblock %}
+
+{% block content %}
+<section class="academic-page">
+  <div class="academic-header">
+    <div><span class="dashboard-eyebrow">STUDENT PROFILE</span>
+      <h1>Academic Information</h1>
+      <p>Manage your college and academic details.</p></div>
+    <div class="academic-header-icon" aria-hidden="true">🎓</div>
+  </div>
+
+  <form method="POST" class="academic-form">
+    <div class="academic-form-heading"><h2>Education details</h2>
+      <p>Enter your current academic information.</p></div>
+    <div class="academic-form-grid">
+      <div class="academic-field academic-field-full">
+        <label for="college">College / University</label>
+        <input type="text" id="college" name="college" maxlength="200" placeholder="Enter your college or university" value="{{ academic.college if academic else '' }}">
+      </div>
+      <div class="academic-field"><label for="department">Department</label>
+        <input type="text" id="department" name="department" maxlength="150" placeholder="e.g. Computer Science" value="{{ academic.department if academic else '' }}"></div>
+      <div class="academic-field"><label for="branch">Branch</label>
+        {% set current_branch = academic.branch if academic else '' %}
+        <select id="branch" name="branch"><option value="">Select branch</option>
+        {% for value in ['CSE', 'IT', 'ECE', 'EEE', 'Mechanical Engineering', 'Civil Engineering', 'AI & ML', 'Data Science', 'Other'] %}
+          <option value="{{ value }}" {% if current_branch == value %}selected{% endif %}>{{ value }}</option>
+        {% endfor %}</select></div>
+      <div class="academic-field"><label for="academic_year">Academic Year</label>
+        {% set current_year = academic.academic_year if academic else '' %}
+        <select id="academic_year" name="academic_year"><option value="">Select academic year</option>
+        {% for value in ['2024-2025', '2025-2026', '2026-2027', '2027-2028', '2028-2029', 'Other'] %}
+          <option value="{{ value }}" {% if current_year == value %}selected{% endif %}>{{ value }}</option>
+        {% endfor %}</select></div>
+      <div class="academic-field"><label for="semester">Semester</label>
+        {% set current_semester = academic.semester if academic else '' %}
+        <select id="semester" name="semester"><option value="">Select semester</option>
+        {% for value in ['Semester 1', 'Semester 2', 'Semester 3', 'Semester 4', 'Semester 5', 'Semester 6', 'Semester 7', 'Semester 8', 'Other'] %}
+          <option value="{{ value }}" {% if current_semester == value %}selected{% endif %}>{{ value }}</option>
+        {% endfor %}</select></div>
+      <div class="academic-field"><label for="section">Section</label>
+        {% set current_section = academic.section if academic else '' %}
+        <select id="section" name="section"><option value="">Select section</option>
+        {% for value in ['A', 'B', 'C', 'D', 'E', 'Other'] %}
+          <option value="{{ value }}" {% if current_section == value %}selected{% endif %}>{{ value }}</option>
+        {% endfor %}</select></div>
+    </div>
+    <div class="academic-form-footer"><span>Academic information is saved to your student account.</span>
+      <button type="submit" class="dashboard-btn">Save Academic Details</button></div>
+  </form>
+</section>
+{% endblock %}

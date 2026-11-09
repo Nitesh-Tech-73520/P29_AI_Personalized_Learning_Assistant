@@ -1,0 +1,2 @@
+{% extends "base.html" %}{% block title %}Quiz result{% endblock %}
+{% block content %}<section class="result-card panel"><div class="result-icon">✦</div><span class="eyebrow">QUIZ COMPLETED</span><h1>{{ "%.0f"|format(score) }}%</h1><p>You answered {{ correct }} out of {{ total }} questions correctly in {{ topic.topic_name }}.</p><div class="result-actions"><a class="button primary" href="{{ url_for('quiz') }}">Try another quiz</a><a class="button ghost" href="{{ url_for('progress') }}">View progress</a></div></section>{% endblock %}

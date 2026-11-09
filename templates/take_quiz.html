@@ -1,0 +1,4 @@
+{% extends "base.html" %}{% block title %}Quiz: {{ topic.topic_name }}{% endblock %}
+{% block content %}<a class="back-link" href="{{ url_for('quiz') }}">← All quizzes</a><div class="page-title"><div><span class="eyebrow">{{ topic.course_name }}</span><h1>{{ topic.topic_name }}</h1><p class="muted">Choose one answer for each question.</p></div></div><form method="post" class="panel quiz-form">
+{% for q in questions %}<fieldset><legend>{{ loop.index }}. {{ q.question }}</legend>{% set qi = loop.index0 %}{% for option in q.options %}<label class="option"><input type="radio" name="q{{ qi }}" value="{{ loop.index0 }}" required><span>{{ option }}</span></label>{% endfor %}</fieldset>{% endfor %}
+<button class="button primary">Submit answers</button></form>{% endblock %}
